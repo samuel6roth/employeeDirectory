@@ -28,7 +28,6 @@ const EmployeeTable = (props) => {
           const { first, last } = employee.name;
           const fullName = `${first} ${last}`;
 
-          // Format date
           const dob = props.formatDate(employee.dob.date);
 
           return (

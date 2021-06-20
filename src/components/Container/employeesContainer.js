@@ -20,7 +20,6 @@ class EmployeesContainer extends Component {
     };
   }
 
-  // When this component mounts, load random users as employees from https://randomuser.me/
   componentDidMount() {
     API.getEmployees()
       .then((res) =>
@@ -32,7 +31,6 @@ class EmployeesContainer extends Component {
       .catch((err) => console.log(err));
   }
 
-  // Update search state to filter by employee name
   handleInputChange = (event) => {
     const value = event.target.value;
     this.setState({ search: value });
@@ -43,8 +41,7 @@ class EmployeesContainer extends Component {
     event.preventDefault();
   };
 
-  // Sort with the key of specified object.
-  // If key has children, sort by primary child and optionally a secondary child. i.e. sort by last name, then first.
+  
   sortBy = (key, primary = 0, secondary = 0) => {
     let sortedEmployees = this.state.filteredEmployees;
     if (this.state.sortDirections[key]) {
@@ -60,8 +57,7 @@ class EmployeesContainer extends Component {
         a = a[key];
         b = b[key];
 
-        // If secondary comparison given and primary comparison is equal
-        // Example: Sorting by last name, if last names are equal, then sort that instance by first name instead.
+        
         if (primary) {
           if (secondary && a[primary] === b[primary]) {
             return a[secondary].localeCompare(b[secondary]);
@@ -110,7 +106,7 @@ class EmployeesContainer extends Component {
     dob.push(("0" + date.getDate()).slice(-2));
     dob.push(date.getFullYear());
 
-    // Join formatted date
+
     return dob.join("-");
   };
 
